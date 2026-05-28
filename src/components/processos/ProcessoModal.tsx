@@ -266,7 +266,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                       {area === 'controles' ? (
                         <><option>Em Andamento</option><option>Concluído</option></>
                       ) : area === 'trabalhista' ? (
-                        <><option>Em Andamento</option><option>Vitória</option><option>Condenação</option><option>Acordo</option></>
+                        <><option>Condenação</option><option>Vitória</option><option>Acordo</option></>
                       ) : (
                         <><option>Em Andamento</option><option>Arquivado</option><option>Vitória</option><option>Condenação</option></>
                       )}

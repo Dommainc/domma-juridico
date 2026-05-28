@@ -172,7 +172,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
             {area === 'controles' ? (
               <option>Concluído</option>
             ) : area === 'trabalhista' ? (
-              <><option>Vitória</option><option>Condenação</option><option>Acordo</option></>
+              <><option>Condenação</option><option>Vitória</option><option>Acordo</option></>
             ) : (
               <><option>Arquivado</option><option>Vitória</option><option>Condenação</option></>
             )}
@@ -310,7 +310,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                       <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.78em', color: 'var(--text-muted)' }}>
                         {p.processo ? p.processo.slice(0, 10) + '...' : '-'}
                       </td>
-                      <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85em', color: '#0f72e5', fontWeight: 600 }}>
+                      <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85em', color: '#ff5757', fontWeight: 600 }}>
                         {formatMoney(p.valor_envolvido)}
                       </td>
                       <td style={{ fontSize: '0.85em', color: 'var(--text-muted)', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -318,7 +318,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                       </td>
                       <td style={{
                         fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85em',
-                        color: (p.valor_desfecho || 0) > 0 ? '#ff5757' : '#a0a0a0',
+                        color: (p.valor_desfecho || 0) > 0 ? '#ff5757' : 'var(--text-muted)',
                       }}>
                         {formatMoney(p.valor_desfecho)}
                       </td>
