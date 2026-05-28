@@ -36,7 +36,7 @@ function StatCard({ label, value, color, icon }: {
     >
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 3,
-        background: 'linear-gradient(90deg, #e94560, #00d9a3)',
+        background: 'linear-gradient(90deg, #0f72e5, #00d9a3)',
       }} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
@@ -132,8 +132,8 @@ export default function Dashboard() {
           datasets: [{
             label: 'Processos por Área',
             data: [trabalhista.length, civil.length, controles.length, registro.length],
-            backgroundColor: ['rgba(233,69,96,0.7)', 'rgba(0,217,163,0.7)', 'rgba(255,168,0,0.7)', 'rgba(15,52,96,0.9)'],
-            borderColor: ['#e94560', '#00d9a3', '#ffa800', '#0f3460'],
+            backgroundColor: ['rgba(15,114,229,0.7)', 'rgba(0,217,163,0.7)', 'rgba(255,168,0,0.7)', 'rgba(15,52,96,0.9)'],
+            borderColor: ['#0f72e5', '#00d9a3', '#ffa800', '#0f3460'],
             borderWidth: 2,
             borderRadius: 6,
           }],
@@ -176,7 +176,7 @@ export default function Dashboard() {
         <StatCard
           label="Valor da Causa"
           value={formatMoney(stats.valorTotal)}
-          color="#e94560"
+          color="#0f72e5"
           icon={<DollarSign size={22} />}
         />
         <StatCard
@@ -240,7 +240,7 @@ export default function Dashboard() {
                 const valorDesfecho = combined.reduce((s, p) => s + (p.valor_desfecho || 0), 0)
 
                 return (
-                  <tr key={emp} style={isGeral ? { background: 'rgba(233,69,96,0.06)', fontWeight: 700 } : {}}>
+                  <tr key={emp} style={isGeral ? { background: 'rgba(15,114,229,0.06)', fontWeight: 700 } : {}}>
                     <td><strong style={{ color: 'var(--text)' }}>{emp}</strong></td>
                     <td>{trab.length}</td>
                     <td>{civ.length}</td>

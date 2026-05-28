@@ -41,7 +41,7 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
         <div style={{
           position: 'absolute', top: '-50%', right: '-20%',
           width: '60%', height: '200%',
-          background: 'radial-gradient(circle, rgba(233,69,96,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(15,114,229,0.12) 0%, transparent 70%)',
           pointerEvents: 'none',
         }} />
 
@@ -50,10 +50,10 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{
               width: 48, height: 48,
-              background: 'linear-gradient(135deg, #e94560, #c93550)',
+              background: 'linear-gradient(135deg, #0f72e5, #0a5ec2)',
               borderRadius: 12,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 4px 20px rgba(233,69,96,0.4)',
+              boxShadow: '0 4px 20px rgba(15,114,229,0.4)',
               flexShrink: 0,
             }}>
               <Scale size={24} color="white" />
@@ -81,7 +81,7 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
                 <Bell size={20} color="var(--text-muted)" />
                 <span style={{
                   position: 'absolute', top: -6, right: -6,
-                  background: '#e94560', color: 'white',
+                  background: '#0f72e5', color: 'white',
                   width: 16, height: 16, borderRadius: '50%',
                   fontSize: '0.65em', fontWeight: 700,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -117,7 +117,7 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
             }}>
               <div style={{
                 width: 32, height: 32, borderRadius: '50%',
-                background: 'linear-gradient(135deg, #e94560, #0f3460)',
+                background: 'linear-gradient(135deg, #0f72e5, #0f3460)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontWeight: 700, fontSize: '0.85em', flexShrink: 0, color: '#fff',
               }}>
@@ -127,7 +127,7 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
                 <div style={{ fontWeight: 600, fontSize: '0.85em', lineHeight: 1.2, color: 'var(--text)' }}>
                   {profile?.full_name || 'Usuário'}
                 </div>
-                <div style={{ color: '#e94560', fontSize: '0.75em', fontWeight: 600 }}>
+                <div style={{ color: '#0f72e5', fontSize: '0.75em', fontWeight: 600 }}>
                   {ROLE_LABELS[profile?.role || 'juridico']}
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
                 onClick={() => onTabChange('usuarios')}
                 style={{
                   padding: '8px 14px',
-                  background: activeTab === 'usuarios' ? 'linear-gradient(135deg, #e94560, #c93550)' : 'var(--bg-subtle)',
+                  background: activeTab === 'usuarios' ? 'linear-gradient(135deg, #0f72e5, #0a5ec2)' : 'var(--bg-subtle)',
                   border: '1px solid var(--border)',
                   borderRadius: 10, color: activeTab === 'usuarios' ? '#fff' : 'var(--text)',
                   cursor: 'pointer', fontSize: '0.85em', fontWeight: 600,
@@ -187,14 +187,14 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
             style={{
               padding: '10px 20px',
               background: activeTab === tab.id
-                ? 'linear-gradient(135deg, #e94560, #c93550)'
+                ? 'linear-gradient(135deg, #0f72e5, #0a5ec2)'
                 : 'var(--secondary)',
-              border: `1px solid ${activeTab === tab.id ? '#e94560' : 'var(--border)'}`,
+              border: `1px solid ${activeTab === tab.id ? '#0f72e5' : 'var(--border)'}`,
               borderRadius: 10, color: activeTab === tab.id ? '#fff' : 'var(--text)',
               cursor: 'pointer', fontSize: '0.9em', fontWeight: 600,
               whiteSpace: 'nowrap',
               fontFamily: 'Bricolage Grotesque, sans-serif',
-              boxShadow: activeTab === tab.id ? '0 0 20px rgba(233,69,96,0.4)' : 'none',
+              boxShadow: activeTab === tab.id ? '0 0 20px rgba(15,114,229,0.4)' : 'none',
               transition: 'all 0.25s ease',
               display: 'flex', alignItems: 'center', gap: 6,
             }}

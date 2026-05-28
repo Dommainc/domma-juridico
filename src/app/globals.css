@@ -8,7 +8,7 @@
   --primary: #1a1a2e;
   --secondary: #16213e;
   --accent: #0f3460;
-  --highlight: #e94560;
+  --highlight: #0f72e5;
   --success: #00d9a3;
   --warning: #ffa800;
   --danger: #ff5757;
@@ -20,7 +20,7 @@
   --bg-subtle: rgba(255, 255, 255, 0.05);
   --card-gradient: linear-gradient(135deg, #1a1a2e, #16213e);
   --border-chart: rgba(42, 42, 62, 0.5);
-  --title-gradient: linear-gradient(90deg, #f5f5f5, #e94560);
+  --title-gradient: linear-gradient(90deg, #f5f5f5, #0f72e5);
 }
 
 [data-theme="light"] {
@@ -35,7 +35,7 @@
   --bg-subtle: rgba(0, 0, 0, 0.04);
   --card-gradient: linear-gradient(135deg, #ffffff, #f8fafc);
   --border-chart: rgba(200, 210, 225, 0.5);
-  --title-gradient: linear-gradient(90deg, #1e293b, #e94560);
+  --title-gradient: linear-gradient(90deg, #1e293b, #0f72e5);
 }
 
 [data-theme="light"] .bg-pattern {
@@ -150,7 +150,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: rgba(233, 69, 96, 0.08);
+  background: rgba(15, 114, 229, 0.08);
 }
 
 /* Form controls */

@@ -187,12 +187,12 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
         <div style={{ display: 'flex', gap: 8 }}>
           <button onClick={() => setModal({ open: true, processo: null })} style={{
             padding: '9px 18px',
-            background: 'linear-gradient(135deg, #e94560, #c93550)',
+            background: 'linear-gradient(135deg, #0f72e5, #0a5ec2)',
             border: 'none', borderRadius: 10, color: '#fff',
             cursor: 'pointer', fontWeight: 700, fontSize: '0.9em',
             fontFamily: 'Bricolage Grotesque, sans-serif',
             display: 'flex', alignItems: 'center', gap: 6,
-            boxShadow: '0 4px 16px rgba(233,69,96,0.3)',
+            boxShadow: '0 4px 16px rgba(15,114,229,0.3)',
           }}>
             <Plus size={16} /> Nova Demanda
           </button>
@@ -220,7 +220,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
           { label: 'Total', value: filtered.length, color: 'var(--text)' },
           { label: 'Andamento', value: filtered.filter(p => p.status === 'Em Andamento').length, color: '#ffa800' },
           { label: 'Vitórias', value: filtered.filter(p => p.status === 'Vitória').length, color: '#00d9a3' },
-          { label: 'Valor da Causa', value: formatMoney(filtered.reduce((s, p) => s + (p.valor_envolvido || 0), 0)), color: '#e94560' },
+          { label: 'Valor da Causa', value: formatMoney(filtered.reduce((s, p) => s + (p.valor_envolvido || 0), 0)), color: '#0f72e5' },
         ].map(s => (
           <div key={s.label} style={{
             padding: '6px 14px', background: 'var(--secondary)', border: '1px solid var(--border)',
@@ -310,7 +310,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                       <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.78em', color: 'var(--text-muted)' }}>
                         {p.processo ? p.processo.slice(0, 10) + '...' : '-'}
                       </td>
-                      <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85em', color: '#e94560', fontWeight: 600 }}>
+                      <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85em', color: '#0f72e5', fontWeight: 600 }}>
                         {formatMoney(p.valor_envolvido)}
                       </td>
                       <td style={{ fontSize: '0.85em', color: 'var(--text-muted)', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -381,8 +381,8 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                 <button key={p} onClick={() => setPage(p)}
                   style={{
                     padding: '6px 12px', borderRadius: 6, cursor: 'pointer',
-                    background: p === page ? 'linear-gradient(135deg, #e94560, #c93550)' : 'var(--secondary)',
-                    border: `1px solid ${p === page ? '#e94560' : 'var(--border)'}`,
+                    background: p === page ? 'linear-gradient(135deg, #0f72e5, #0a5ec2)' : 'var(--secondary)',
+                    border: `1px solid ${p === page ? '#0f72e5' : 'var(--border)'}`,
                     color: 'var(--text)', fontWeight: p === page ? 700 : 400,
                   }}>
                   {p}

@@ -70,7 +70,7 @@ export default function UsuariosTab() {
   }
 
   const roleColors: Record<UserRole, string> = {
-    ti: '#e94560',
+    ti: '#0f72e5',
     diretoria: '#ffa800',
     juridico: '#00d9a3',
     advogada_terceirizada: '#4a9eff',
@@ -95,7 +95,7 @@ export default function UsuariosTab() {
         </div>
         <button onClick={() => setCreating(true)} style={{
           padding: '10px 20px',
-          background: 'linear-gradient(135deg, #e94560, #c93550)',
+          background: 'linear-gradient(135deg, #0f72e5, #0a5ec2)',
           border: 'none', borderRadius: 10,
           color: '#fff', cursor: 'pointer', fontWeight: 700,
           fontFamily: 'Bricolage Grotesque, sans-serif',
@@ -109,10 +109,10 @@ export default function UsuariosTab() {
       {/* Create user form */}
       {creating && (
         <div style={{
-          background: 'var(--card)', border: '1px solid #e94560', borderRadius: 14,
+          background: 'var(--card)', border: '1px solid #0f72e5', borderRadius: 14,
           padding: 24, marginBottom: 20, animation: 'fadeIn 0.3s ease',
         }}>
-          <h3 style={{ marginBottom: 20, fontWeight: 700, color: '#e94560' }}>➕ Criar Novo Usuário</h3>
+          <h3 style={{ marginBottom: 20, fontWeight: 700, color: '#0f72e5' }}>➕ Criar Novo Usuário</h3>
           <form onSubmit={handleCreateUser}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
               <div>
@@ -163,7 +163,7 @@ export default function UsuariosTab() {
                 Cancelar
               </button>
               <button type="submit" disabled={saving}
-                style={{ padding: '10px 24px', background: saving ? '#2a2a3e' : 'linear-gradient(135deg, #e94560, #c93550)', border: 'none', borderRadius: 8, color: '#fff', cursor: 'pointer', fontWeight: 700, fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                style={{ padding: '10px 24px', background: saving ? '#2a2a3e' : 'linear-gradient(135deg, #0f72e5, #0a5ec2)', border: 'none', borderRadius: 8, color: '#fff', cursor: 'pointer', fontWeight: 700, fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 {saving ? 'Criando...' : '✓ Criar Usuário'}
               </button>
             </div>
@@ -198,7 +198,7 @@ export default function UsuariosTab() {
                     </div>
                     {editingId === u.id ? (
                       <input value={editName} onChange={e => setEditName(e.target.value)}
-                        style={{ padding: '6px 10px', background: '#0f0f1e', border: '1px solid #e94560', borderRadius: 6, color: '#f5f5f5', outline: 'none', width: 160, fontSize: '0.9em' }} />
+                        style={{ padding: '6px 10px', background: '#0f0f1e', border: '1px solid #0f72e5', borderRadius: 6, color: '#f5f5f5', outline: 'none', width: 160, fontSize: '0.9em' }} />
                     ) : (
                       <div>
                         <div style={{ fontWeight: 600, fontSize: '0.9em' }}>{u.full_name}</div>
@@ -211,7 +211,7 @@ export default function UsuariosTab() {
                 <td>
                   {editingId === u.id ? (
                     <select value={editRole} onChange={e => setEditRole(e.target.value as UserRole)}
-                      style={{ padding: '6px 10px', background: '#0f0f1e', border: '1px solid #e94560', borderRadius: 6, color: '#f5f5f5', outline: 'none', fontSize: '0.85em' }}>
+                      style={{ padding: '6px 10px', background: '#0f0f1e', border: '1px solid #0f72e5', borderRadius: 6, color: '#f5f5f5', outline: 'none', fontSize: '0.85em' }}>
                       <option value="juridico">Jurídico Interno</option>
                       <option value="advogada_terceirizada">Advogada Terceirizada</option>
                       <option value="diretoria">Diretoria</option>

@@ -52,7 +52,7 @@ export default function PrazosTab() {
             padding: '4px 10px', borderRadius: 12,
             fontSize: '0.75em', fontWeight: 700,
             background: p.areaLabel === 'Trabalhista' ? 'rgba(233,69,96,0.2)' : 'rgba(0,217,163,0.15)',
-            color: p.areaLabel === 'Trabalhista' ? '#e94560' : '#00d9a3',
+            color: p.areaLabel === 'Trabalhista' ? '#0f72e5' : '#00d9a3',
           }}>
             {p.areaLabel}
           </span>

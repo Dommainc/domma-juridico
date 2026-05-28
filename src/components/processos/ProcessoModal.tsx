@@ -203,8 +203,8 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                 <button key={t} onClick={() => setActiveTab(t)} style={{
                   padding: '10px 18px',
                   background: 'none', border: 'none',
-                  borderBottom: `3px solid ${activeTab === t ? '#e94560' : 'transparent'}`,
-                  color: activeTab === t ? '#e94560' : 'var(--text-muted)',
+                  borderBottom: `3px solid ${activeTab === t ? '#0f72e5' : 'transparent'}`,
+                  color: activeTab === t ? '#0f72e5' : 'var(--text-muted)',
                   cursor: 'pointer', fontSize: '0.9em', fontWeight: 600,
                   fontFamily: 'Bricolage Grotesque, sans-serif',
                   transition: 'color 0.2s',
@@ -393,7 +393,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                           marginBottom: 6, border: '1px solid var(--border)',
                         }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <FileText size={16} color="#e94560" />
+                            <FileText size={16} color="#0f72e5" />
                             <span style={{ fontSize: '0.85em' }}>{att.nome}</span>
                             <span style={{ color: 'var(--text-muted)', fontSize: '0.75em' }}>
                               {att.tamanho ? `(${(att.tamanho / 1024).toFixed(0)} KB)` : ''}
@@ -431,10 +431,10 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                       <div key={log.id} style={{
                         padding: '12px 16px', marginBottom: 8,
                         background: 'var(--secondary)', borderRadius: 8,
-                        borderLeft: '3px solid #e94560',
+                        borderLeft: '3px solid #0f72e5',
                       }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                          <strong style={{ color: '#e94560', fontSize: '0.85em' }}>{log.user_name}</strong>
+                          <strong style={{ color: '#0f72e5', fontSize: '0.85em' }}>{log.user_name}</strong>
                           <span style={{ color: 'var(--text-muted)', fontSize: '0.78em' }}>
                             {new Date(log.created_at).toLocaleString('pt-BR')}
                           </span>
@@ -468,11 +468,11 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                 }}>Cancelar</button>
                 <button type="submit" disabled={saving} style={{
                   padding: '11px 28px',
-                  background: saving ? 'var(--border)' : 'linear-gradient(135deg, #e94560, #c93550)',
+                  background: saving ? 'var(--border)' : 'linear-gradient(135deg, #0f72e5, #0a5ec2)',
                   border: 'none', borderRadius: 10,
                   color: '#fff', cursor: saving ? 'not-allowed' : 'pointer',
                   fontWeight: 700, fontFamily: 'Bricolage Grotesque, sans-serif',
-                  boxShadow: saving ? 'none' : '0 4px 20px rgba(233,69,96,0.4)',
+                  boxShadow: saving ? 'none' : '0 4px 20px rgba(15,114,229,0.4)',
                 }}>
                   {saving ? '⏳ Salvando...' : '💾 Salvar'}
                 </button>
@@ -487,7 +487,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                 💬 Comentários
                 {comentarios.length > 0 && (
                   <span style={{
-                    background: '#e94560', color: 'white',
+                    background: '#0f72e5', color: 'white',
                     width: 20, height: 20, borderRadius: '50%',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: '0.7em', fontWeight: 700,
@@ -511,10 +511,10 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                   <div key={c.id} style={{
                     padding: '10px 12px', marginBottom: 10,
                     background: 'var(--secondary)', borderRadius: 8,
-                    borderLeft: '3px solid #e94560',
+                    borderLeft: '3px solid #0f72e5',
                   }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                      <strong style={{ color: '#e94560', fontSize: '0.8em' }}>{c.user_name}</strong>
+                      <strong style={{ color: '#0f72e5', fontSize: '0.8em' }}>{c.user_name}</strong>
                       <span style={{ color: 'var(--text-muted)', fontSize: '0.72em' }}>
                         {new Date(c.created_at).toLocaleString('pt-BR')}
                       </span>
@@ -549,7 +549,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                   disabled={!newComment.trim()}
                   style={{
                     width: '100%', padding: '9px',
-                    background: newComment.trim() ? 'linear-gradient(135deg, #e94560, #c93550)' : 'var(--border)',
+                    background: newComment.trim() ? 'linear-gradient(135deg, #0f72e5, #0a5ec2)' : 'var(--border)',
                     border: 'none', borderRadius: 8,
                     color: '#fff', cursor: newComment.trim() ? 'pointer' : 'not-allowed',
                     fontWeight: 600, fontSize: '0.85em',

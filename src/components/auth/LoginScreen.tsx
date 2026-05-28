@@ -31,7 +31,7 @@ export default function LoginScreen() {
       <div style={{
         position: 'absolute', top: '20%', left: '15%',
         width: 400, height: 400,
-        background: 'radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(15,114,229,0.15) 0%, transparent 70%)',
         animation: 'pulse-glow 8s ease-in-out infinite',
         pointerEvents: 'none',
       }} />
@@ -48,7 +48,7 @@ export default function LoginScreen() {
         padding: '48px 40px',
         borderRadius: 20,
         border: '1px solid var(--border)',
-        boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(233,69,96,0.1)',
+        boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(15,114,229,0.1)',
         width: '90%',
         maxWidth: 420,
         position: 'relative',
@@ -58,11 +58,11 @@ export default function LoginScreen() {
         <div style={{ textAlign: 'center', marginBottom: 36 }}>
           <div style={{
             width: 64, height: 64,
-            background: 'linear-gradient(135deg, #e94560, #c93550)',
+            background: 'linear-gradient(135deg, #0f72e5, #0a5ec2)',
             borderRadius: 16,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             margin: '0 auto 16px',
-            boxShadow: '0 8px 32px rgba(233,69,96,0.4)',
+            boxShadow: '0 8px 32px rgba(15,114,229,0.4)',
           }}>
             <Scale size={32} color="white" />
           </div>
@@ -106,8 +106,8 @@ export default function LoginScreen() {
                   transition: 'all 0.3s',
                 }}
                 onFocus={e => {
-                  e.target.style.borderColor = '#e94560'
-                  e.target.style.boxShadow = '0 0 0 3px rgba(233,69,96,0.2)'
+                  e.target.style.borderColor = '#0f72e5'
+                  e.target.style.boxShadow = '0 0 0 3px rgba(15,114,229,0.2)'
                 }}
                 onBlur={e => {
                   e.target.style.borderColor = 'var(--border)'
@@ -140,8 +140,8 @@ export default function LoginScreen() {
                   transition: 'all 0.3s',
                 }}
                 onFocus={e => {
-                  e.target.style.borderColor = '#e94560'
-                  e.target.style.boxShadow = '0 0 0 3px rgba(233,69,96,0.2)'
+                  e.target.style.borderColor = '#0f72e5'
+                  e.target.style.boxShadow = '0 0 0 3px rgba(15,114,229,0.2)'
                 }}
                 onBlur={e => {
                   e.target.style.borderColor = 'var(--border)'
@@ -176,12 +176,12 @@ export default function LoginScreen() {
             disabled={loading}
             style={{
               width: '100%', padding: '14px',
-              background: loading ? 'var(--border)' : 'linear-gradient(135deg, #e94560, #c93550)',
+              background: loading ? 'var(--border)' : 'linear-gradient(135deg, #0f72e5, #0a5ec2)',
               border: 'none', borderRadius: 10,
               color: '#fff', fontSize: '1em', fontWeight: 700,
               cursor: loading ? 'not-allowed' : 'pointer',
               fontFamily: 'Bricolage Grotesque, sans-serif',
-              boxShadow: loading ? 'none' : '0 4px 20px rgba(233,69,96,0.4)',
+              boxShadow: loading ? 'none' : '0 4px 20px rgba(15,114,229,0.4)',
               transition: 'all 0.3s',
               letterSpacing: 0.5,
             }}

@@ -22,7 +22,7 @@ function AppContent() {
       }}>
         <div style={{
           width: 48, height: 48, border: '3px solid var(--border)',
-          borderTopColor: '#e94560', borderRadius: '50%',
+          borderTopColor: '#0f72e5', borderRadius: '50%',
           animation: 'spin 1s linear infinite',
         }} />
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
