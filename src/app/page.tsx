@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { AuthProvider, useAuth } from '@/hooks/useAuth'
+import { ThemeProvider } from '@/hooks/useTheme'
 import LoginScreen from '@/components/auth/LoginScreen'
 import Header from '@/components/layout/Header'
 import Dashboard from '@/components/dashboard/Dashboard'
@@ -17,15 +18,15 @@ function AppContent() {
     return (
       <div style={{
         height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-        background: '#0f0f1e', flexDirection: 'column', gap: 16,
+        background: 'var(--bg)', flexDirection: 'column', gap: 16,
       }}>
         <div style={{
-          width: 48, height: 48, border: '3px solid #2a2a3e',
+          width: 48, height: 48, border: '3px solid var(--border)',
           borderTopColor: '#e94560', borderRadius: '50%',
           animation: 'spin 1s linear infinite',
         }} />
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-        <p style={{ color: '#a0a0a0', fontSize: '0.9em' }}>Carregando sistema...</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.9em' }}>Carregando sistema...</p>
       </div>
     )
   }
@@ -33,7 +34,7 @@ function AppContent() {
   if (!user) return <LoginScreen />
 
   return (
-    <div style={{ position: 'relative', zIndex: 1, minHeight: '100vh' }}>
+    <div style={{ position: 'relative', zIndex: 1, minHeight: '100vh', background: 'var(--bg)', color: 'var(--text)' }}>
       <div style={{ maxWidth: 1600, margin: '0 auto', padding: '20px 20px' }}>
         <Header activeTab={activeTab} onTabChange={setActiveTab} />
 
@@ -83,7 +84,9 @@ function AppContent() {
 export default function Home() {
   return (
     <AuthProvider>
-      <AppContent />
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
     </AuthProvider>
   )
 }

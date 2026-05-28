@@ -89,7 +89,7 @@ export default function UsuariosTab() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
         <div>
           <h2 style={{ fontWeight: 800, fontSize: '1.2em' }}>👥 Gerenciar Usuários</h2>
-          <p style={{ color: '#a0a0a0', fontSize: '0.85em', marginTop: 4 }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.85em', marginTop: 4 }}>
             Acesso restrito à equipe de TI. {users.length} usuários cadastrados.
           </p>
         </div>
@@ -109,42 +109,42 @@ export default function UsuariosTab() {
       {/* Create user form */}
       {creating && (
         <div style={{
-          background: '#1a1a2e', border: '1px solid #e94560', borderRadius: 14,
+          background: 'var(--card)', border: '1px solid #e94560', borderRadius: 14,
           padding: 24, marginBottom: 20, animation: 'fadeIn 0.3s ease',
         }}>
           <h3 style={{ marginBottom: 20, fontWeight: 700, color: '#e94560' }}>➕ Criar Novo Usuário</h3>
           <form onSubmit={handleCreateUser}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
               <div>
-                <label style={{ display: 'block', color: '#a0a0a0', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
+                <label style={{ display: 'block', color: 'var(--text-muted)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
                   Nome Completo
                 </label>
                 <input value={newUser.full_name} onChange={e => setNewUser(u => ({ ...u, full_name: e.target.value }))}
                   required placeholder="Ex: Maria Silva"
-                  style={{ width: '100%', padding: '10px 12px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 8, color: '#f5f5f5', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }} />
+                  style={{ width: '100%', padding: '10px 12px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }} />
               </div>
               <div>
-                <label style={{ display: 'block', color: '#a0a0a0', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
+                <label style={{ display: 'block', color: 'var(--text-muted)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
                   Email
                 </label>
                 <input type="email" value={newUser.email} onChange={e => setNewUser(u => ({ ...u, email: e.target.value }))}
                   required placeholder="email@domma.com.br"
-                  style={{ width: '100%', padding: '10px 12px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 8, color: '#f5f5f5', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }} />
+                  style={{ width: '100%', padding: '10px 12px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }} />
               </div>
               <div>
-                <label style={{ display: 'block', color: '#a0a0a0', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
+                <label style={{ display: 'block', color: 'var(--text-muted)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
                   Senha Inicial
                 </label>
                 <input type="password" value={newUser.password} onChange={e => setNewUser(u => ({ ...u, password: e.target.value }))}
                   required minLength={6} placeholder="Mínimo 6 caracteres"
-                  style={{ width: '100%', padding: '10px 12px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 8, color: '#f5f5f5', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }} />
+                  style={{ width: '100%', padding: '10px 12px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }} />
               </div>
               <div>
-                <label style={{ display: 'block', color: '#a0a0a0', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
+                <label style={{ display: 'block', color: 'var(--text-muted)', fontSize: '0.78em', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6, fontWeight: 600 }}>
                   Nível de Acesso
                 </label>
                 <select value={newUser.role} onChange={e => setNewUser(u => ({ ...u, role: e.target.value as UserRole }))}
-                  style={{ width: '100%', padding: '10px 12px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 8, color: '#f5f5f5', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  style={{ width: '100%', padding: '10px 12px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                   <option value="juridico">Jurídico Interno</option>
                   <option value="advogada_terceirizada">Advogada Terceirizada</option>
                   <option value="diretoria">Diretoria</option>

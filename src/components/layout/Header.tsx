@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
+import { useTheme } from '@/hooks/useTheme'
 import { ROLE_LABELS } from '@/lib/utils'
 import { LogOut, Users, Scale, Sun, Moon, Bell } from 'lucide-react'
 import { TabType } from '@/types'
@@ -22,14 +23,14 @@ const TABS: { id: TabType; label: string; icon: string }[] = [
 
 export default function Header({ activeTab, onTabChange, notifications = 0 }: HeaderProps) {
   const { profile, signOut, canManageUsers } = useAuth()
-  const [isScrolled, setIsScrolled] = useState(false)
+  const { isDark, toggleTheme } = useTheme()
 
   return (
     <div style={{ position: 'relative', zIndex: 10 }}>
       {/* Top bar */}
       <div style={{
-        background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
-        border: '1px solid #2a2a3e',
+        background: 'var(--card-gradient)',
+        border: '1px solid var(--border)',
         borderRadius: 16,
         padding: '24px 32px',
         marginBottom: 16,
@@ -60,13 +61,13 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
             <div>
               <h1 style={{
                 fontSize: '1.5em', fontWeight: 800,
-                background: 'linear-gradient(90deg, #f5f5f5, #e94560)',
+                background: 'var(--title-gradient)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text', lineHeight: 1.2,
               }}>
                 Controle Jurídico DOMMA
               </h1>
-              <p style={{ color: '#a0a0a0', fontSize: '0.8em', marginTop: 2 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.8em', marginTop: 2 }}>
                 Sistema de Gestão de Demandas Jurídicas
               </p>
             </div>
@@ -77,7 +78,7 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
             {/* Notification bell */}
             {notifications > 0 && (
               <div style={{ position: 'relative', cursor: 'pointer' }}>
-                <Bell size={20} color="#a0a0a0" />
+                <Bell size={20} color="var(--text-muted)" />
                 <span style={{
                   position: 'absolute', top: -6, right: -6,
                   background: '#e94560', color: 'white',
@@ -90,23 +91,40 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
               </div>
             )}
 
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              title={isDark ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
+              style={{
+                padding: '8px',
+                background: 'var(--bg-subtle)',
+                border: '1px solid var(--border)',
+                borderRadius: 10, color: 'var(--text-muted)',
+                cursor: 'pointer',
+                display: 'flex', alignItems: 'center',
+                transition: 'all 0.2s',
+              }}
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
             {/* User info */}
             <div style={{
               display: 'flex', alignItems: 'center', gap: 10,
               padding: '8px 14px',
-              background: 'rgba(255,255,255,0.05)',
-              borderRadius: 10, border: '1px solid #2a2a3e',
+              background: 'var(--bg-subtle)',
+              borderRadius: 10, border: '1px solid var(--border)',
             }}>
               <div style={{
                 width: 32, height: 32, borderRadius: '50%',
                 background: 'linear-gradient(135deg, #e94560, #0f3460)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontWeight: 700, fontSize: '0.85em', flexShrink: 0,
+                fontWeight: 700, fontSize: '0.85em', flexShrink: 0, color: '#fff',
               }}>
                 {(profile?.full_name || 'U')[0].toUpperCase()}
               </div>
               <div>
-                <div style={{ fontWeight: 600, fontSize: '0.85em', lineHeight: 1.2 }}>
+                <div style={{ fontWeight: 600, fontSize: '0.85em', lineHeight: 1.2, color: 'var(--text)' }}>
                   {profile?.full_name || 'Usuário'}
                 </div>
                 <div style={{ color: '#e94560', fontSize: '0.75em', fontWeight: 600 }}>
@@ -121,9 +139,9 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
                 onClick={() => onTabChange('usuarios')}
                 style={{
                   padding: '8px 14px',
-                  background: activeTab === 'usuarios' ? 'linear-gradient(135deg, #e94560, #c93550)' : 'rgba(255,255,255,0.05)',
-                  border: '1px solid #2a2a3e',
-                  borderRadius: 10, color: '#f5f5f5',
+                  background: activeTab === 'usuarios' ? 'linear-gradient(135deg, #e94560, #c93550)' : 'var(--bg-subtle)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 10, color: activeTab === 'usuarios' ? '#fff' : 'var(--text)',
                   cursor: 'pointer', fontSize: '0.85em', fontWeight: 600,
                   display: 'flex', alignItems: 'center', gap: 6,
                   fontFamily: 'Bricolage Grotesque, sans-serif',
@@ -158,8 +176,8 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
       <div style={{
         display: 'flex', gap: 8, flexWrap: 'nowrap',
         padding: '12px 16px',
-        background: '#1a1a2e',
-        borderRadius: 14, border: '1px solid #2a2a3e',
+        background: 'var(--card)',
+        borderRadius: 14, border: '1px solid var(--border)',
         overflowX: 'auto', marginBottom: 24,
       }}>
         {TABS.map(tab => (
@@ -170,9 +188,9 @@ export default function Header({ activeTab, onTabChange, notifications = 0 }: He
               padding: '10px 20px',
               background: activeTab === tab.id
                 ? 'linear-gradient(135deg, #e94560, #c93550)'
-                : '#16213e',
-              border: `1px solid ${activeTab === tab.id ? '#e94560' : '#2a2a3e'}`,
-              borderRadius: 10, color: '#f5f5f5',
+                : 'var(--secondary)',
+              border: `1px solid ${activeTab === tab.id ? '#e94560' : 'var(--border)'}`,
+              borderRadius: 10, color: activeTab === tab.id ? '#fff' : 'var(--text)',
               cursor: 'pointer', fontSize: '0.9em', fontWeight: 600,
               whiteSpace: 'nowrap',
               fontFamily: 'Bricolage Grotesque, sans-serif',

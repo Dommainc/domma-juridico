@@ -142,15 +142,15 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
 
   const inputStyle = {
     width: '100%', padding: '10px 12px',
-    background: '#16213e', border: '1px solid #2a2a3e',
-    borderRadius: 8, color: '#f5f5f5',
+    background: 'var(--secondary)', border: '1px solid var(--border)',
+    borderRadius: 8, color: 'var(--text)',
     fontSize: '0.9em', outline: 'none',
     fontFamily: 'Bricolage Grotesque, sans-serif',
     transition: 'border-color 0.2s',
   }
 
   const labelStyle = {
-    display: 'block', color: '#a0a0a0',
+    display: 'block', color: 'var(--text-muted)',
     fontSize: '0.78em', textTransform: 'uppercase' as const,
     letterSpacing: 1, marginBottom: 6, fontWeight: 600,
   }
@@ -158,8 +158,8 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
   return (
     <div className="modal-backdrop" onClick={e => e.target === e.currentTarget && onClose()}>
       <div style={{
-        background: '#1a1a2e', borderRadius: 20,
-        border: '1px solid #2a2a3e',
+        background: 'var(--card)', borderRadius: 20,
+        border: '1px solid var(--border)',
         width: '95%', maxWidth: 1100, height: '90vh',
         display: 'flex', flexDirection: 'column',
         boxShadow: '0 30px 80px rgba(0,0,0,0.7)',
@@ -167,7 +167,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
       }}>
         {/* Header */}
         <div style={{
-          padding: '20px 28px', borderBottom: '1px solid #2a2a3e',
+          padding: '20px 28px', borderBottom: '1px solid var(--border)',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexShrink: 0,
         }}>
@@ -186,18 +186,18 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
         <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
 
           {/* LEFT: Main form */}
-          <div style={{ flex: 7, overflow: 'auto', padding: '24px 28px', borderRight: '1px solid #2a2a3e' }}>
+          <div style={{ flex: 7, overflow: 'auto', padding: '24px 28px', borderRight: '1px solid var(--border)' }}>
             {/* Modal tabs */}
             <div style={{
-              display: 'flex', gap: 4, borderBottom: '2px solid #2a2a3e',
-              marginBottom: 24, position: 'sticky', top: 0, background: '#1a1a2e', zIndex: 5, paddingBottom: 0,
+              display: 'flex', gap: 4, borderBottom: '2px solid var(--border)',
+              marginBottom: 24, position: 'sticky', top: 0, background: 'var(--card)', zIndex: 5, paddingBottom: 0,
             }}>
               {(['dados', 'documentos', 'auditoria'] as ModalTab[]).map(t => (
                 <button key={t} onClick={() => setActiveTab(t)} style={{
                   padding: '10px 18px',
                   background: 'none', border: 'none',
                   borderBottom: `3px solid ${activeTab === t ? '#e94560' : 'transparent'}`,
-                  color: activeTab === t ? '#e94560' : '#a0a0a0',
+                  color: activeTab === t ? '#e94560' : 'var(--text-muted)',
                   cursor: 'pointer', fontSize: '0.9em', fontWeight: 600,
                   fontFamily: 'Bricolage Grotesque, sans-serif',
                   transition: 'color 0.2s',
@@ -337,22 +337,22 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                   {/* Checklist */}
                   {checklistItems.length > 0 && (
                     <div style={{ marginBottom: 32 }}>
-                      <h4 style={{ marginBottom: 16, fontWeight: 700, color: '#a0a0a0', textTransform: 'uppercase', fontSize: '0.85em', letterSpacing: 1 }}>
+                      <h4 style={{ marginBottom: 16, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', fontSize: '0.85em', letterSpacing: 1 }}>
                         ☑️ Checklist de Documentos ({area})
                       </h4>
                       {checklistItems.map(item => (
                         <label key={item} style={{
                           display: 'flex', alignItems: 'center', gap: 12,
                           padding: '10px 14px', marginBottom: 6,
-                          background: checklist[item] ? 'rgba(0,217,163,0.08)' : '#16213e',
+                          background: checklist[item] ? 'rgba(0,217,163,0.08)' : 'var(--secondary)',
                           borderRadius: 8, cursor: 'pointer',
-                          border: `1px solid ${checklist[item] ? 'rgba(0,217,163,0.3)' : '#2a2a3e'}`,
+                          border: `1px solid ${checklist[item] ? 'rgba(0,217,163,0.3)' : 'var(--border)'}`,
                           transition: 'all 0.2s',
                         }}>
                           <input type="checkbox" checked={!!checklist[item]}
                             onChange={e => setChecklist(c => ({ ...c, [item]: e.target.checked }))}
                             style={{ accentColor: '#00d9a3', width: 16, height: 16 }} />
-                          <span style={{ color: checklist[item] ? '#00d9a3' : '#f5f5f5', fontSize: '0.9em' }}>
+                          <span style={{ color: checklist[item] ? '#00d9a3' : 'var(--text)', fontSize: '0.9em' }}>
                             {checklist[item] ? '✓ ' : ''}{item}
                           </span>
                         </label>
@@ -363,14 +363,14 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                   {/* File uploads */}
                   {!isNew && (
                     <div>
-                      <h4 style={{ marginBottom: 16, fontWeight: 700, color: '#a0a0a0', textTransform: 'uppercase', fontSize: '0.85em', letterSpacing: 1 }}>
+                      <h4 style={{ marginBottom: 16, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', fontSize: '0.85em', letterSpacing: 1 }}>
                         📎 Arquivos Anexados
                       </h4>
                       <label style={{
                         display: 'flex', alignItems: 'center', gap: 10,
                         padding: '14px 20px', marginBottom: 16,
-                        border: '2px dashed #2a2a3e', borderRadius: 10,
-                        cursor: 'pointer', color: '#a0a0a0', transition: 'all 0.2s',
+                        border: '2px dashed var(--border)', borderRadius: 10,
+                        cursor: 'pointer', color: 'var(--text-muted)', transition: 'all 0.2s',
                       }}>
                         <Upload size={20} />
                         <span>{uploadingDoc ? 'Enviando...' : 'Clique para anexar um PDF ou documento'}</span>
@@ -380,13 +380,13 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                       {attachments.map(att => (
                         <div key={att.id} style={{
                           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                          padding: '10px 14px', background: '#16213e', borderRadius: 8,
-                          marginBottom: 6, border: '1px solid #2a2a3e',
+                          padding: '10px 14px', background: 'var(--secondary)', borderRadius: 8,
+                          marginBottom: 6, border: '1px solid var(--border)',
                         }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                             <FileText size={16} color="#e94560" />
                             <span style={{ fontSize: '0.85em' }}>{att.nome}</span>
-                            <span style={{ color: '#a0a0a0', fontSize: '0.75em' }}>
+                            <span style={{ color: 'var(--text-muted)', fontSize: '0.75em' }}>
                               {att.tamanho ? `(${(att.tamanho / 1024).toFixed(0)} KB)` : ''}
                             </span>
                           </div>
@@ -397,14 +397,14 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                         </div>
                       ))}
                       {attachments.length === 0 && (
-                        <p style={{ color: '#a0a0a0', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
                           Nenhum arquivo anexado ainda.
                         </p>
                       )}
                     </div>
                   )}
                   {isNew && (
-                    <p style={{ color: '#a0a0a0', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
                       💡 Salve o processo primeiro para poder anexar arquivos.
                     </p>
                   )}
@@ -416,17 +416,17 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                 <div>
                   <h4 style={{ marginBottom: 16, fontWeight: 700 }}>🔍 Histórico de Alterações</h4>
                   {auditLogs.length === 0 ? (
-                    <p style={{ color: '#a0a0a0', textAlign: 'center', padding: 40 }}>Nenhuma alteração registrada.</p>
+                    <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: 40 }}>Nenhuma alteração registrada.</p>
                   ) : (
                     auditLogs.map(log => (
                       <div key={log.id} style={{
                         padding: '12px 16px', marginBottom: 8,
-                        background: '#16213e', borderRadius: 8,
+                        background: 'var(--secondary)', borderRadius: 8,
                         borderLeft: '3px solid #e94560',
                       }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                           <strong style={{ color: '#e94560', fontSize: '0.85em' }}>{log.user_name}</strong>
-                          <span style={{ color: '#a0a0a0', fontSize: '0.78em' }}>
+                          <span style={{ color: 'var(--text-muted)', fontSize: '0.78em' }}>
                             {new Date(log.created_at).toLocaleString('pt-BR')}
                           </span>
                         </div>
@@ -443,13 +443,13 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
               {/* Submit */}
               <div style={{ marginTop: 28, display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
                 <button type="button" onClick={onClose} style={{
-                  padding: '11px 24px', background: '#16213e', border: '1px solid #2a2a3e',
-                  borderRadius: 10, color: '#f5f5f5', cursor: 'pointer', fontWeight: 600,
+                  padding: '11px 24px', background: 'var(--secondary)', border: '1px solid var(--border)',
+                  borderRadius: 10, color: 'var(--text)', cursor: 'pointer', fontWeight: 600,
                   fontFamily: 'Bricolage Grotesque, sans-serif',
                 }}>Cancelar</button>
                 <button type="submit" disabled={saving} style={{
                   padding: '11px 28px',
-                  background: saving ? '#2a2a3e' : 'linear-gradient(135deg, #e94560, #c93550)',
+                  background: saving ? 'var(--border)' : 'linear-gradient(135deg, #e94560, #c93550)',
                   border: 'none', borderRadius: 10,
                   color: '#fff', cursor: saving ? 'not-allowed' : 'pointer',
                   fontWeight: 700, fontFamily: 'Bricolage Grotesque, sans-serif',
@@ -463,7 +463,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
 
           {/* RIGHT: Comments sidebar */}
           <div style={{ flex: 3, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-            <div style={{ padding: '24px 20px', borderBottom: '1px solid #2a2a3e', flexShrink: 0 }}>
+            <div style={{ padding: '24px 20px', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
               <h4 style={{ fontWeight: 700, fontSize: '0.9em', display: 'flex', alignItems: 'center', gap: 8 }}>
                 💬 Comentários
                 {comentarios.length > 0 && (
@@ -480,23 +480,23 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
             {/* Comments list */}
             <div style={{ flex: 1, overflowY: 'auto', padding: '16px 20px' }}>
               {isNew ? (
-                <p style={{ color: '#a0a0a0', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
                   Salve o processo para adicionar comentários.
                 </p>
               ) : comentarios.length === 0 ? (
-                <p style={{ color: '#a0a0a0', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85em', textAlign: 'center', padding: 20 }}>
                   Nenhum comentário ainda.
                 </p>
               ) : (
                 comentarios.map(c => (
                   <div key={c.id} style={{
                     padding: '10px 12px', marginBottom: 10,
-                    background: '#16213e', borderRadius: 8,
+                    background: 'var(--secondary)', borderRadius: 8,
                     borderLeft: '3px solid #e94560',
                   }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                       <strong style={{ color: '#e94560', fontSize: '0.8em' }}>{c.user_name}</strong>
-                      <span style={{ color: '#a0a0a0', fontSize: '0.72em' }}>
+                      <span style={{ color: 'var(--text-muted)', fontSize: '0.72em' }}>
                         {new Date(c.created_at).toLocaleString('pt-BR')}
                       </span>
                     </div>
@@ -516,8 +516,8 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                   rows={3}
                   style={{
                     width: '100%', padding: '10px 12px',
-                    background: '#16213e', border: '1px solid #2a2a3e',
-                    borderRadius: 8, color: '#f5f5f5',
+                    background: 'var(--secondary)', border: '1px solid var(--border)',
+                    borderRadius: 8, color: 'var(--text)',
                     fontSize: '0.85em', resize: 'none', outline: 'none',
                     fontFamily: 'Bricolage Grotesque, sans-serif',
                     marginBottom: 8,
@@ -530,7 +530,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                   disabled={!newComment.trim()}
                   style={{
                     width: '100%', padding: '9px',
-                    background: newComment.trim() ? 'linear-gradient(135deg, #e94560, #c93550)' : '#2a2a3e',
+                    background: newComment.trim() ? 'linear-gradient(135deg, #e94560, #c93550)' : 'var(--border)',
                     border: 'none', borderRadius: 8,
                     color: '#fff', cursor: newComment.trim() ? 'pointer' : 'not-allowed',
                     fontWeight: 600, fontSize: '0.85em',

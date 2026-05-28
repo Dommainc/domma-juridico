@@ -152,26 +152,26 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1 }}>
           <div style={{ position: 'relative', flex: 1, minWidth: 200 }}>
-            <Search size={15} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: '#a0a0a0' }} />
+            <Search size={15} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
             <input
               value={search}
               onChange={e => { setSearch(e.target.value); setPage(1) }}
               placeholder="Buscar processo, autor, empreendimento..."
               style={{
                 width: '100%', padding: '9px 9px 9px 32px',
-                background: '#16213e', border: '1px solid #2a2a3e',
-                borderRadius: 8, color: '#f5f5f5', fontSize: '0.9em',
+                background: 'var(--secondary)', border: '1px solid var(--border)',
+                borderRadius: 8, color: 'var(--text)', fontSize: '0.9em',
                 outline: 'none', fontFamily: 'Bricolage Grotesque, sans-serif',
               }}
             />
           </div>
           <select value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setPage(1) }}
-            style={{ padding: '9px 10px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 8, color: '#f5f5f5', fontSize: '0.85em', outline: 'none' }}>
+            style={{ padding: '9px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', fontSize: '0.85em', outline: 'none' }}>
             <option value="">Todos Status</option>
             <option>Em Andamento</option><option>Arquivado</option><option>Vitória</option><option>Condenação</option>
           </select>
           <select value={filterPrioridade} onChange={e => { setFilterPrioridade(e.target.value); setPage(1) }}
-            style={{ padding: '9px 10px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 8, color: '#f5f5f5', fontSize: '0.85em', outline: 'none' }}>
+            style={{ padding: '9px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', fontSize: '0.85em', outline: 'none' }}>
             <option value="">Todas Prioridades</option>
             <option>Baixa</option><option>Média</option><option>Alta</option><option>Urgente</option>
           </select>
@@ -190,15 +190,15 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
             <Plus size={16} /> Nova Demanda
           </button>
           <button onClick={handleExport} style={{
-            padding: '9px 14px', background: '#16213e', border: '1px solid #2a2a3e',
-            borderRadius: 10, color: '#f5f5f5', cursor: 'pointer', fontSize: '0.85em',
+            padding: '9px 14px', background: 'var(--secondary)', border: '1px solid var(--border)',
+            borderRadius: 10, color: 'var(--text)', cursor: 'pointer', fontSize: '0.85em',
             fontFamily: 'Bricolage Grotesque, sans-serif', display: 'flex', alignItems: 'center', gap: 6,
           }}>
             <Download size={15} /> Excel
           </button>
           <label style={{
-            padding: '9px 14px', background: '#16213e', border: '1px solid #2a2a3e',
-            borderRadius: 10, color: '#f5f5f5', cursor: 'pointer', fontSize: '0.85em',
+            padding: '9px 14px', background: 'var(--secondary)', border: '1px solid var(--border)',
+            borderRadius: 10, color: 'var(--text)', cursor: 'pointer', fontSize: '0.85em',
             fontFamily: 'Bricolage Grotesque, sans-serif', display: 'flex', alignItems: 'center', gap: 6,
           }}>
             <Upload size={15} /> Importar
@@ -210,14 +210,14 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
       {/* Stats summary bar */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
         {[
-          { label: 'Total', value: filtered.length, color: '#f5f5f5' },
+          { label: 'Total', value: filtered.length, color: 'var(--text)' },
           { label: 'Andamento', value: filtered.filter(p => p.status === 'Em Andamento').length, color: '#ffa800' },
           { label: 'Vitórias', value: filtered.filter(p => p.status === 'Vitória').length, color: '#00d9a3' },
           { label: 'Valor da Causa', value: formatMoney(filtered.reduce((s, p) => s + (p.valor_envolvido || 0), 0)), color: '#e94560' },
         ].map(s => (
           <div key={s.label} style={{
-            padding: '6px 14px', background: '#16213e', border: '1px solid #2a2a3e',
-            borderRadius: 20, fontSize: '0.82em', color: '#a0a0a0',
+            padding: '6px 14px', background: 'var(--secondary)', border: '1px solid var(--border)',
+            borderRadius: 20, fontSize: '0.82em', color: 'var(--text-muted)',
           }}>
             {s.label}: <strong style={{ color: s.color, fontFamily: 'JetBrains Mono, monospace' }}>{s.value}</strong>
           </div>
@@ -225,7 +225,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
       </div>
 
       {/* Table */}
-      <div style={{ background: '#1a1a2e', borderRadius: 14, border: '1px solid #2a2a3e', overflow: 'hidden' }}>
+      <div style={{ background: 'var(--card)', borderRadius: 14, border: '1px solid var(--border)', overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ minWidth: 900 }}>
             <thead>
@@ -258,7 +258,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
             <tbody>
               {paginated.length === 0 ? (
                 <tr>
-                  <td colSpan={11} style={{ textAlign: 'center', padding: '50px 20px', color: '#a0a0a0' }}>
+                  <td colSpan={11} style={{ textAlign: 'center', padding: '50px 20px', color: 'var(--text-muted)' }}>
                     <div>
                       <div style={{ fontSize: '2em', marginBottom: 10 }}>⚖️</div>
                       <strong>Nenhuma demanda encontrada</strong>
@@ -284,7 +284,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                       <td style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {p.autor || '-'}
                       </td>
-                      <td style={{ maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: '#a0a0a0', fontSize: '0.85em' }}>
+                      <td style={{ maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'var(--text-muted)', fontSize: '0.85em' }}>
                         {p.descricao || '-'}
                       </td>
                       <td>
@@ -300,13 +300,13 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                           {p.status}
                         </span>
                       </td>
-                      <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.78em', color: '#a0a0a0' }}>
+                      <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.78em', color: 'var(--text-muted)' }}>
                         {p.processo ? p.processo.slice(0, 10) + '...' : '-'}
                       </td>
                       <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85em', color: '#e94560', fontWeight: 600 }}>
                         {formatMoney(p.valor_envolvido)}
                       </td>
-                      <td style={{ fontSize: '0.85em', color: '#a0a0a0', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <td style={{ fontSize: '0.85em', color: 'var(--text-muted)', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {p.desfecho || '-'}
                       </td>
                       <td style={{
@@ -329,8 +329,8 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                             onClick={() => setModal({ open: true, processo: p })}
                             title="Editar"
                             style={{
-                              padding: '5px 9px', background: '#16213e', border: '1px solid #2a2a3e',
-                              borderRadius: 6, cursor: 'pointer', color: '#f5f5f5',
+                              padding: '5px 9px', background: 'var(--secondary)', border: '1px solid var(--border)',
+                              borderRadius: 6, cursor: 'pointer', color: 'var(--text)',
                               transition: 'all 0.2s',
                             }}
                           ><Edit size={13} /></button>
@@ -358,14 +358,14 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
         {totalPages > 1 && (
           <div style={{
             display: 'flex', justifyContent: 'center', alignItems: 'center',
-            gap: 8, padding: '16px 24px', borderTop: '1px solid #2a2a3e', flexWrap: 'wrap',
+            gap: 8, padding: '16px 24px', borderTop: '1px solid var(--border)', flexWrap: 'wrap',
           }}>
             <button onClick={() => setPage(1)} disabled={page === 1}
-              style={{ padding: '6px 10px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 6, color: '#f5f5f5', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>
+              style={{ padding: '6px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 6, color: 'var(--text)', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>
               «
             </button>
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-              style={{ padding: '6px 10px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 6, color: '#f5f5f5', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>
+              style={{ padding: '6px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 6, color: 'var(--text)', cursor: 'pointer', opacity: page === 1 ? 0.4 : 1 }}>
               ‹
             </button>
             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -374,23 +374,23 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                 <button key={p} onClick={() => setPage(p)}
                   style={{
                     padding: '6px 12px', borderRadius: 6, cursor: 'pointer',
-                    background: p === page ? 'linear-gradient(135deg, #e94560, #c93550)' : '#16213e',
-                    border: `1px solid ${p === page ? '#e94560' : '#2a2a3e'}`,
-                    color: '#f5f5f5', fontWeight: p === page ? 700 : 400,
+                    background: p === page ? 'linear-gradient(135deg, #e94560, #c93550)' : 'var(--secondary)',
+                    border: `1px solid ${p === page ? '#e94560' : 'var(--border)'}`,
+                    color: 'var(--text)', fontWeight: p === page ? 700 : 400,
                   }}>
                   {p}
                 </button>
               )
             })}
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
-              style={{ padding: '6px 10px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 6, color: '#f5f5f5', cursor: 'pointer', opacity: page === totalPages ? 0.4 : 1 }}>
+              style={{ padding: '6px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 6, color: 'var(--text)', cursor: 'pointer', opacity: page === totalPages ? 0.4 : 1 }}>
               ›
             </button>
             <button onClick={() => setPage(totalPages)} disabled={page === totalPages}
-              style={{ padding: '6px 10px', background: '#16213e', border: '1px solid #2a2a3e', borderRadius: 6, color: '#f5f5f5', cursor: 'pointer', opacity: page === totalPages ? 0.4 : 1 }}>
+              style={{ padding: '6px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 6, color: 'var(--text)', cursor: 'pointer', opacity: page === totalPages ? 0.4 : 1 }}>
               »
             </button>
-            <span style={{ color: '#a0a0a0', fontSize: '0.82em' }}>
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.82em' }}>
               {filtered.length} resultados · Página {page}/{totalPages}
             </span>
           </div>

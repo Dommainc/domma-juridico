@@ -17,6 +17,29 @@
   --bg: #0f0f1e;
   --card: #1a1a2e;
   --border: #2a2a3e;
+  --bg-subtle: rgba(255, 255, 255, 0.05);
+  --card-gradient: linear-gradient(135deg, #1a1a2e, #16213e);
+  --border-chart: rgba(42, 42, 62, 0.5);
+  --title-gradient: linear-gradient(90deg, #f5f5f5, #e94560);
+}
+
+[data-theme="light"] {
+  --primary: #ffffff;
+  --secondary: #f1f5f9;
+  --accent: #e8edf5;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --bg-subtle: rgba(0, 0, 0, 0.04);
+  --card-gradient: linear-gradient(135deg, #ffffff, #f8fafc);
+  --border-chart: rgba(200, 210, 225, 0.5);
+  --title-gradient: linear-gradient(90deg, #1e293b, #e94560);
+}
+
+[data-theme="light"] .bg-pattern {
+  opacity: 0.015;
 }
 
 * {
@@ -53,11 +76,11 @@ body {
 }
 
 /* Status badges */
-.status-andamento { background: var(--warning); color: var(--bg); }
-.status-arquivado { background: var(--text-muted); color: var(--bg); }
-.status-vitoria { background: var(--success); color: var(--bg); }
-.status-condenacao { background: var(--danger); color: var(--bg); }
-.status-concluido { background: var(--success); color: var(--bg); }
+.status-andamento { background: var(--warning); color: #1e293b; }
+.status-arquivado { background: var(--text-muted); color: #fff; }
+.status-vitoria { background: var(--success); color: #1e293b; }
+.status-condenacao { background: var(--danger); color: #fff; }
+.status-concluido { background: var(--success); color: #1e293b; }
 
 /* Priority colors */
 .priority-alta { color: var(--danger); font-weight: 700; }

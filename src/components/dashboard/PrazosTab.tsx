@@ -79,7 +79,7 @@ export default function PrazosTab() {
             {p.status}
           </span>
         </td>
-        <td style={{ color: '#a0a0a0', fontSize: '0.88em' }}>{p.responsavel || '-'}</td>
+        <td style={{ color: 'var(--text-muted)', fontSize: '0.88em' }}>{p.responsavel || '-'}</td>
         <td style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.75em', color: '#a0a0a0' }}>
           {p.processo ? p.processo.slice(0, 12) + '...' : '-'}
         </td>
@@ -99,10 +99,10 @@ export default function PrazosTab() {
           { label: '✅ Total com Prazo', count: all.length, color: '#00d9a3' },
         ].map(s => (
           <div key={s.label} style={{
-            background: '#1a1a2e', border: '1px solid #2a2a3e', borderRadius: 12,
+            background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 12,
             padding: '16px 20px',
           }}>
-            <div style={{ color: '#a0a0a0', fontSize: '0.78em', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>{s.label}</div>
+            <div style={{ color: 'var(--text-muted)', fontSize: '0.78em', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>{s.label}</div>
             <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '2em', fontWeight: 800, color: s.color }}>
               {s.count}
             </div>
@@ -111,8 +111,8 @@ export default function PrazosTab() {
       </div>
 
       {/* Table */}
-      <div style={{ background: '#1a1a2e', borderRadius: 14, border: '1px solid #2a2a3e', overflow: 'hidden' }}>
-        <div style={{ padding: '18px 24px', borderBottom: '1px solid #2a2a3e', fontWeight: 700 }}>
+      <div style={{ background: 'var(--card)', borderRadius: 14, border: '1px solid var(--border)', overflow: 'hidden' }}>
+        <div style={{ padding: '18px 24px', borderBottom: '1px solid var(--border)', fontWeight: 700 }}>
           ⏰ Cronologia de Prazos e Audiências
         </div>
         <div style={{ overflowX: 'auto' }}>

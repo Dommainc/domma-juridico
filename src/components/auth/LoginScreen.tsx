@@ -23,7 +23,7 @@ export default function LoginScreen() {
   return (
     <div style={{
       position: 'fixed', inset: 0,
-      background: 'linear-gradient(135deg, #0a0a1a 0%, #0f0f1e 50%, #1a0a2e 100%)',
+      background: 'var(--bg)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       zIndex: 10000,
     }}>
@@ -44,10 +44,10 @@ export default function LoginScreen() {
       }} />
 
       <div style={{
-        background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
+        background: 'var(--card-gradient)',
         padding: '48px 40px',
         borderRadius: 20,
-        border: '1px solid #2a2a3e',
+        border: '1px solid var(--border)',
         boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(233,69,96,0.1)',
         width: '90%',
         maxWidth: 420,
@@ -69,7 +69,7 @@ export default function LoginScreen() {
           <h1 style={{
             fontSize: '1.8em',
             fontWeight: 800,
-            background: 'linear-gradient(90deg, #f5f5f5, #e94560)',
+            background: 'var(--title-gradient)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -77,7 +77,7 @@ export default function LoginScreen() {
           }}>
             DOMMA Jurídico
           </h1>
-          <p style={{ color: '#a0a0a0', fontSize: '0.9em' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9em' }}>
             Sistema de Controle Jurídico
           </p>
         </div>
@@ -86,11 +86,11 @@ export default function LoginScreen() {
           {/* Email */}
           <div style={{ marginBottom: 16, position: 'relative' }}>
             <label style={{
-              display: 'block', color: '#a0a0a0', fontSize: '0.8em',
+              display: 'block', color: 'var(--text-muted)', fontSize: '0.8em',
               textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8, fontWeight: 600,
             }}>E-mail</label>
             <div style={{ position: 'relative' }}>
-              <Mail size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#a0a0a0' }} />
+              <Mail size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
                 type="email"
                 value={email}
@@ -99,9 +99,9 @@ export default function LoginScreen() {
                 required
                 style={{
                   width: '100%', padding: '12px 12px 12px 40px',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid #2a2a3e',
-                  borderRadius: 10, color: '#f5f5f5',
+                  background: 'var(--secondary)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 10, color: 'var(--text)',
                   fontSize: '0.95em', outline: 'none',
                   transition: 'all 0.3s',
                 }}
@@ -110,7 +110,7 @@ export default function LoginScreen() {
                   e.target.style.boxShadow = '0 0 0 3px rgba(233,69,96,0.2)'
                 }}
                 onBlur={e => {
-                  e.target.style.borderColor = '#2a2a3e'
+                  e.target.style.borderColor = 'var(--border)'
                   e.target.style.boxShadow = 'none'
                 }}
               />
@@ -120,11 +120,11 @@ export default function LoginScreen() {
           {/* Password */}
           <div style={{ marginBottom: 24, position: 'relative' }}>
             <label style={{
-              display: 'block', color: '#a0a0a0', fontSize: '0.8em',
+              display: 'block', color: 'var(--text-muted)', fontSize: '0.8em',
               textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8, fontWeight: 600,
             }}>Senha</label>
             <div style={{ position: 'relative' }}>
-              <Lock size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#a0a0a0' }} />
+              <Lock size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
                 type={showPass ? 'text' : 'password'}
                 value={password}
@@ -133,9 +133,9 @@ export default function LoginScreen() {
                 required
                 style={{
                   width: '100%', padding: '12px 40px 12px 40px',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid #2a2a3e',
-                  borderRadius: 10, color: '#f5f5f5',
+                  background: 'var(--secondary)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 10, color: 'var(--text)',
                   fontSize: '0.95em', outline: 'none',
                   transition: 'all 0.3s',
                 }}
@@ -144,7 +144,7 @@ export default function LoginScreen() {
                   e.target.style.boxShadow = '0 0 0 3px rgba(233,69,96,0.2)'
                 }}
                 onBlur={e => {
-                  e.target.style.borderColor = '#2a2a3e'
+                  e.target.style.borderColor = 'var(--border)'
                   e.target.style.boxShadow = 'none'
                 }}
               />
@@ -153,7 +153,7 @@ export default function LoginScreen() {
                 onClick={() => setShowPass(!showPass)}
                 style={{
                   position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
-                  background: 'none', border: 'none', color: '#a0a0a0', cursor: 'pointer',
+                  background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer',
                 }}
               >
                 {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -176,7 +176,7 @@ export default function LoginScreen() {
             disabled={loading}
             style={{
               width: '100%', padding: '14px',
-              background: loading ? '#2a2a3e' : 'linear-gradient(135deg, #e94560, #c93550)',
+              background: loading ? 'var(--border)' : 'linear-gradient(135deg, #e94560, #c93550)',
               border: 'none', borderRadius: 10,
               color: '#fff', fontSize: '1em', fontWeight: 700,
               cursor: loading ? 'not-allowed' : 'pointer',
@@ -191,7 +191,7 @@ export default function LoginScreen() {
         </form>
 
         <p style={{
-          textAlign: 'center', color: '#a0a0a0', fontSize: '0.8em',
+          textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.8em',
           marginTop: 24, lineHeight: 1.5,
         }}>
           Acesso gerenciado pela equipe de TI.<br />
