@@ -220,7 +220,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
           { label: 'Total', value: filtered.length, color: 'var(--text)' },
           { label: 'Andamento', value: filtered.filter(p => p.status === 'Em Andamento').length, color: '#ffa800' },
           { label: 'Vitórias', value: filtered.filter(p => p.status === 'Vitória').length, color: '#00d9a3' },
-          { label: 'Valor da Causa', value: formatMoney(filtered.reduce((s, p) => s + (p.valor_envolvido || 0), 0)), color: '#0f72e5' },
+          { label: 'Valor da Causa', value: formatMoney(filtered.reduce((s, p) => s + (p.valor_envolvido || 0), 0)), color: '#ff5757' },
         ].map(s => (
           <div key={s.label} style={{
             padding: '6px 14px', background: 'var(--secondary)', border: '1px solid var(--border)',

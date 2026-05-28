@@ -176,7 +176,7 @@ export default function Dashboard() {
         <StatCard
           label="Valor da Causa"
           value={formatMoney(stats.valorTotal)}
-          color="#0f72e5"
+          color="#ff5757"
           icon={<DollarSign size={22} />}
         />
         <StatCard
