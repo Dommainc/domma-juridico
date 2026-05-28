@@ -57,6 +57,7 @@ body {
 .status-arquivado { background: var(--text-muted); color: var(--bg); }
 .status-vitoria { background: var(--success); color: var(--bg); }
 .status-condenacao { background: var(--danger); color: var(--bg); }
+.status-concluido { background: var(--success); color: var(--bg); }
 
 /* Priority colors */
 .priority-alta { color: var(--danger); font-weight: 700; }

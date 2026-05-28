@@ -57,6 +57,7 @@ export function getStatusClass(status: string): string {
     'Arquivado': 'arquivado',
     'Vitória': 'vitoria',
     'Condenação': 'condenacao',
+    'Concluído': 'concluido',
   }
   return map[status] || 'andamento'
 }
@@ -77,6 +78,7 @@ export function getStatusBadgeClass(status: StatusType | string): string {
     Arquivado: 'bg-text-muted text-bg',
     Vitória: 'bg-success text-bg',
     Condenação: 'bg-danger text-bg',
+    Concluído: 'bg-success text-bg',
   }
   return map[status] || 'bg-text-muted text-bg'
 }

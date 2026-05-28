@@ -296,7 +296,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                         <span style={{
                           padding: '4px 10px', borderRadius: 12, fontSize: '0.75em', fontWeight: 700,
                           textTransform: 'uppercase', letterSpacing: 0.5,
-                        }} className={`status-${p.status === 'Em Andamento' ? 'andamento' : p.status === 'Arquivado' ? 'arquivado' : p.status === 'Vitória' ? 'vitoria' : 'condenacao'}`}>
+                        }} className={`status-${p.status === 'Em Andamento' ? 'andamento' : p.status === 'Arquivado' ? 'arquivado' : p.status === 'Vitória' ? 'vitoria' : p.status === 'Concluído' ? 'concluido' : 'condenacao'}`}>
                           {p.status}
                         </span>
                       </td>

@@ -256,7 +256,11 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                     <label style={labelStyle}>Status</label>
                     <select value={form.status || 'Em Andamento'} onChange={e => setForm(f => ({ ...f, status: e.target.value as any }))}
                       style={inputStyle}>
-                      <option>Em Andamento</option><option>Arquivado</option><option>Vitória</option><option>Condenação</option>
+                      {area === 'controles' ? (
+                        <><option>Em Andamento</option><option>Concluído</option></>
+                      ) : (
+                        <><option>Em Andamento</option><option>Arquivado</option><option>Vitória</option><option>Condenação</option></>
+                      )}
                     </select>
                   </div>
 
