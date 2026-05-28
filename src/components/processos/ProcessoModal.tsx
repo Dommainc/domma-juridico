@@ -89,16 +89,23 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
     setAttachments(data || [])
   }
 
+  const [saveError, setSaveError] = useState('')
+
   async function handleSave(e: React.FormEvent) {
     e.preventDefault()
     setSaving(true)
+    setSaveError('')
     const payload = {
       ...form,
       documentos: JSON.stringify(checklist),
     }
-    await onSave(payload)
+    const result = await onSave(payload)
     setSaving(false)
-    onClose()
+    if (result) {
+      onClose()
+    } else {
+      setSaveError('Erro ao salvar. Verifique os dados e tente novamente.')
+    }
   }
 
   async function handleAddComment() {
@@ -258,6 +265,8 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                       style={inputStyle}>
                       {area === 'controles' ? (
                         <><option>Em Andamento</option><option>Concluído</option></>
+                      ) : area === 'trabalhista' ? (
+                        <><option>Em Andamento</option><option>Vitória</option><option>Condenação</option><option>Acordo</option></>
                       ) : (
                         <><option>Em Andamento</option><option>Arquivado</option><option>Vitória</option><option>Condenação</option></>
                       )}
@@ -437,6 +446,16 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                       </div>
                     ))
                   )}
+                </div>
+              )}
+
+              {/* Save error */}
+              {saveError && (
+                <div style={{
+                  background: 'rgba(255,87,87,0.15)', border: '1px solid rgba(255,87,87,0.4)',
+                  borderRadius: 8, padding: '10px 14px', marginTop: 16, color: '#ff5757', fontSize: '0.85em',
+                }}>
+                  ⚠️ {saveError}
                 </div>
               )}
 

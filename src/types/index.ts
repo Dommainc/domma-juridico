@@ -12,7 +12,7 @@ export type AreaType = 'trabalhista' | 'civil' | 'controles' | 'registro'
 
 export type PrioridadeType = 'Baixa' | 'Média' | 'Alta' | 'Urgente'
 
-export type StatusType = 'Em Andamento' | 'Arquivado' | 'Vitória' | 'Condenação' | 'Concluído'
+export type StatusType = 'Em Andamento' | 'Arquivado' | 'Vitória' | 'Condenação' | 'Concluído' | 'Acordo'
 
 export interface Processo {
   id: number

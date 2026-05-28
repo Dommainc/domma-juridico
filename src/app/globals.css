@@ -81,6 +81,7 @@ body {
 .status-vitoria { background: var(--success); color: #1e293b; }
 .status-condenacao { background: var(--danger); color: #fff; }
 .status-concluido { background: var(--success); color: #1e293b; }
+.status-acordo { background: #4a9eff; color: #fff; }
 
 /* Priority colors */
 .priority-alta { color: var(--danger); font-weight: 700; }

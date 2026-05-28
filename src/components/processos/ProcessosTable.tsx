@@ -168,7 +168,14 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
           <select value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setPage(1) }}
             style={{ padding: '9px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', fontSize: '0.85em', outline: 'none' }}>
             <option value="">Todos Status</option>
-            <option>Em Andamento</option><option>Arquivado</option><option>Vitória</option><option>Condenação</option>
+            <option>Em Andamento</option>
+            {area === 'controles' ? (
+              <option>Concluído</option>
+            ) : area === 'trabalhista' ? (
+              <><option>Vitória</option><option>Condenação</option><option>Acordo</option></>
+            ) : (
+              <><option>Arquivado</option><option>Vitória</option><option>Condenação</option></>
+            )}
           </select>
           <select value={filterPrioridade} onChange={e => { setFilterPrioridade(e.target.value); setPage(1) }}
             style={{ padding: '9px 10px', background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text)', fontSize: '0.85em', outline: 'none' }}>
@@ -296,7 +303,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                         <span style={{
                           padding: '4px 10px', borderRadius: 12, fontSize: '0.75em', fontWeight: 700,
                           textTransform: 'uppercase', letterSpacing: 0.5,
-                        }} className={`status-${p.status === 'Em Andamento' ? 'andamento' : p.status === 'Arquivado' ? 'arquivado' : p.status === 'Vitória' ? 'vitoria' : p.status === 'Concluído' ? 'concluido' : 'condenacao'}`}>
+                        }} className={`status-${p.status === 'Em Andamento' ? 'andamento' : p.status === 'Arquivado' ? 'arquivado' : p.status === 'Vitória' ? 'vitoria' : p.status === 'Concluído' ? 'concluido' : p.status === 'Acordo' ? 'acordo' : 'condenacao'}`}>
                           {p.status}
                         </span>
                       </td>

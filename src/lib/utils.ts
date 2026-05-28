@@ -58,6 +58,7 @@ export function getStatusClass(status: string): string {
     'Vitória': 'vitoria',
     'Condenação': 'condenacao',
     'Concluído': 'concluido',
+    'Acordo': 'acordo',
   }
   return map[status] || 'andamento'
 }
@@ -79,6 +80,7 @@ export function getStatusBadgeClass(status: StatusType | string): string {
     Vitória: 'bg-success text-bg',
     Condenação: 'bg-danger text-bg',
     Concluído: 'bg-success text-bg',
+    Acordo: 'bg-info text-bg',
   }
   return map[status] || 'bg-text-muted text-bg'
 }
