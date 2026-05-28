@@ -34,13 +34,15 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
   const [uploadingDoc, setUploadingDoc] = useState(false)
   const [attachments, setAttachments] = useState<any[]>([])
   const [checklist, setChecklist] = useState<Record<string, boolean>>({})
+  const defaultStatus = area === 'trabalhista' ? 'Condenação' : area === 'controles' ? 'Em Andamento' : 'Em Andamento'
+
   const [form, setForm] = useState<Partial<Processo>>({
     empreendimento: '',
     autor: '',
     descricao: '',
     responsavel: '',
     prioridade: 'Média',
-    status: 'Em Andamento',
+    status: defaultStatus,
     processo: '',
     valor_envolvido: 0,
     desfecho: '',
@@ -99,12 +101,19 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
       ...form,
       documentos: JSON.stringify(checklist),
     }
-    const result = await onSave(payload)
-    setSaving(false)
-    if (result) {
-      onClose()
-    } else {
-      setSaveError('Erro ao salvar. Verifique os dados e tente novamente.')
+    try {
+      const result = await onSave(payload)
+      setSaving(false)
+      if (result) {
+        onClose()
+      } else {
+        setSaveError('Erro ao salvar. Tente novamente.')
+      }
+    } catch (err: unknown) {
+      setSaving(false)
+      const msg = err instanceof Error ? err.message : 'Erro desconhecido ao salvar'
+      setSaveError(msg)
+      console.error('[ProcessoModal] Erro ao salvar:', err)
     }
   }
 

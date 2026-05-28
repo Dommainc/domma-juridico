@@ -96,7 +96,7 @@ export function useProcessos(area: AreaType) {
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Erro ao salvar'
       setError(msg)
-      return null
+      throw new Error(msg)
     }
   }
 
