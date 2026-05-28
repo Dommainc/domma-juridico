@@ -318,7 +318,7 @@ export default function ProcessosTable({ area, areaLabel, showAutorLabel = 'Auto
                       </td>
                       <td style={{
                         fontFamily: 'JetBrains Mono, monospace', fontSize: '0.85em',
-                        color: (p.valor_desfecho || 0) > 0 ? '#ff5757' : 'var(--text-muted)',
+                        color: (p.valor_desfecho || 0) > 0 ? '#0f72e5' : 'var(--text-muted)',
                       }}>
                         {formatMoney(p.valor_desfecho)}
                       </td>
