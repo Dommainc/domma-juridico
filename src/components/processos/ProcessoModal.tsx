@@ -543,7 +543,7 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                         {new Date(c.created_at).toLocaleString('pt-BR')}
                       </span>
                     </div>
-                    <p style={{ fontSize: '0.85em', lineHeight: 1.5, margin: 0 }}>{c.texto}</p>
+                    <p style={{ fontSize: '0.85em', lineHeight: 1.5, margin: 0 }}>{c.comentario}</p>
                   </div>
                 ))
               )}

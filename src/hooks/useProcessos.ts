@@ -168,7 +168,7 @@ export async function addComentario(
 ): Promise<{ data: Comentario | null; error: string | null }> {
   const { data, error } = await supabase
     .from('comentarios')
-    .insert({ processo_id: processoId, user_id: userId, user_name: userName, texto })
+    .insert({ processo_id: processoId, user_id: userId, user_name: userName, comentario: texto })
     .select()
     .single()
   if (error) {

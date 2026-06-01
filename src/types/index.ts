@@ -44,7 +44,7 @@ export interface Comentario {
   processo_id: number
   user_id: string
   user_name: string
-  texto: string
+  comentario: string
   created_at: string
 }
 
