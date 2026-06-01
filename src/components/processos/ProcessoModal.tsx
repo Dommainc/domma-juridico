@@ -30,6 +30,8 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
   const [saving, setSaving] = useState(false)
   const [comentarios, setComentarios] = useState<Comentario[]>([])
   const [newComment, setNewComment] = useState('')
+  const [commentError, setCommentError] = useState('')
+  const [sendingComment, setSendingComment] = useState(false)
   const [auditLogs, setAuditLogs] = useState<any[]>([])
   const [uploadingDoc, setUploadingDoc] = useState(false)
   const [attachments, setAttachments] = useState<any[]>([])
@@ -119,12 +121,15 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
 
   async function handleAddComment() {
     if (!newComment.trim() || !user || !processo?.id) return
-    const { data: c, error: commentError } = await addComentario(processo.id, user.id, profile?.full_name || user.email || 'Usuário', newComment)
+    setSendingComment(true)
+    setCommentError('')
+    const { data: c, error: err } = await addComentario(processo.id, user.id, profile?.full_name || user.email || 'Usuário', newComment)
+    setSendingComment(false)
     if (c) {
       setComentarios(prev => [...prev, c])
       setNewComment('')
     } else {
-      setSaveError(commentError || 'Erro ao salvar comentário.')
+      setCommentError(err || 'Erro ao salvar comentário.')
     }
   }
 
@@ -562,21 +567,30 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
                   }}
                   onKeyDown={e => { if (e.key === 'Enter' && e.ctrlKey) handleAddComment() }}
                 />
+                {commentError && (
+                  <div style={{
+                    background: 'rgba(255,87,87,0.15)', border: '1px solid rgba(255,87,87,0.4)',
+                    borderRadius: 8, padding: '8px 12px', marginBottom: 8,
+                    color: '#ff5757', fontSize: '0.8em',
+                  }}>
+                    ⚠️ {commentError}
+                  </div>
+                )}
                 <button
                   type="button"
                   onClick={handleAddComment}
-                  disabled={!newComment.trim()}
+                  disabled={!newComment.trim() || sendingComment}
                   style={{
                     width: '100%', padding: '9px',
-                    background: newComment.trim() ? 'linear-gradient(135deg, #0f72e5, #0a5ec2)' : 'var(--border)',
+                    background: newComment.trim() && !sendingComment ? 'linear-gradient(135deg, #0f72e5, #0a5ec2)' : 'var(--border)',
                     border: 'none', borderRadius: 8,
-                    color: '#fff', cursor: newComment.trim() ? 'pointer' : 'not-allowed',
+                    color: '#fff', cursor: newComment.trim() && !sendingComment ? 'pointer' : 'not-allowed',
                     fontWeight: 600, fontSize: '0.85em',
                     fontFamily: 'Bricolage Grotesque, sans-serif',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                   }}
                 >
-                  <Send size={14} /> Enviar (Ctrl+Enter)
+                  <Send size={14} /> {sendingComment ? 'Enviando...' : 'Enviar (Ctrl+Enter)'}
                 </button>
               </div>
             )}
