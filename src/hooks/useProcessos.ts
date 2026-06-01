@@ -53,6 +53,11 @@ export function useProcessos(area: AreaType) {
         ...item,
         area,
         user_id: user.id,
+        // converte strings vazias em null para campos de data
+        data_inicio: item.data_inicio || null,
+        data_conclusao: item.data_conclusao || null,
+        data_audiencia: item.data_audiencia || null,
+        hora_audiencia: item.hora_audiencia || null,
       }
 
       const isNew = !item.id
@@ -167,8 +172,12 @@ export async function addComentario(
     .select()
     .single()
   if (error) {
+    const msg = error.message || error.details || JSON.stringify(error) || 'Erro ao salvar comentário'
     console.error('[addComentario]', error)
-    return { data: null, error: error.message || 'Erro ao salvar comentário' }
+    return { data: null, error: msg }
+  }
+  if (!data) {
+    return { data: null, error: 'Comentário não foi salvo. Verifique sua sessão.' }
   }
   return { data: data as Comentario, error: null }
 }
