@@ -94,7 +94,8 @@ export function useProcessos(area: AreaType) {
       await fetchProcessos()
       return savedData
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Erro ao salvar'
+      const msg = (err as any)?.message || (err as any)?.details || String(err) || 'Erro ao salvar'
+      console.error('[saveProcesso]', err)
       setError(msg)
       throw new Error(msg)
     }
@@ -159,14 +160,17 @@ export async function addComentario(
   userId: string,
   userName: string,
   texto: string
-): Promise<Comentario | null> {
+): Promise<{ data: Comentario | null; error: string | null }> {
   const { data, error } = await supabase
     .from('comentarios')
     .insert({ processo_id: processoId, user_id: userId, user_name: userName, texto })
     .select()
     .single()
-  if (error) return null
-  return data as Comentario
+  if (error) {
+    console.error('[addComentario]', error)
+    return { data: null, error: error.message || 'Erro ao salvar comentário' }
+  }
+  return { data: data as Comentario, error: null }
 }
 
 export async function getAuditLogs(processoId: number): Promise<AuditLog[]> {

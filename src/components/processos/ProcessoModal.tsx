@@ -119,8 +119,13 @@ export default function ProcessoModal({ area, processo, onClose, onSave }: Props
 
   async function handleAddComment() {
     if (!newComment.trim() || !user || !processo?.id) return
-    const c = await addComentario(processo.id, user.id, profile?.full_name || user.email || 'Usuário', newComment)
-    if (c) { setComentarios(prev => [...prev, c]); setNewComment('') }
+    const { data: c, error: commentError } = await addComentario(processo.id, user.id, profile?.full_name || user.email || 'Usuário', newComment)
+    if (c) {
+      setComentarios(prev => [...prev, c])
+      setNewComment('')
+    } else {
+      setSaveError(commentError || 'Erro ao salvar comentário.')
+    }
   }
 
   async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
