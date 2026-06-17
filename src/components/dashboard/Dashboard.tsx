@@ -57,7 +57,7 @@ function StatCard({ label, value, color, icon }: {
         </div>
         {icon && (
           <div style={{
-            padding: 10, borderRadius: 10,
+            padding: 7, borderRadius: 8, flexShrink: 0,
             background: 'var(--bg-subtle)',
             color: color || 'var(--text-muted)',
           }}>{icon}</div>
@@ -178,7 +178,7 @@ export default function Dashboard() {
           label="Valor da Causa"
           value={formatMoney(stats.valorTotal)}
           color="#ff5757"
-          icon={<DollarSign size={22} />}
+          icon={<DollarSign size={18} />}
         />
         <StatCard
           label="Prazos Críticos (7d)"
