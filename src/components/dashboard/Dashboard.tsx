@@ -45,7 +45,7 @@ function StatCard({ label, value, color, icon }: {
             textTransform: 'uppercase', letterSpacing: 1, fontWeight: 600, marginBottom: 10,
           }}>{label}</div>
           <div style={{
-            fontSize: String(value).length > 12 ? '1.5em' : String(value).length > 8 ? '1.85em' : '2.2em',
+            fontSize: String(value).length > 14 ? '1.2em' : String(value).length > 12 ? '1.5em' : String(value).length > 8 ? '1.85em' : '2.2em',
             fontWeight: 800,
             fontFamily: 'JetBrains Mono, monospace',
             color: color || 'var(--text)',
